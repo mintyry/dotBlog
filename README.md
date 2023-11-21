@@ -1,0 +1,2 @@
+# dotBlog
+CMS-style blog
