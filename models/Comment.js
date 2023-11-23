@@ -1,14 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Post extends Model { }
+class Comment extends Model { }
 
-Post.init(
+Comment.init(
     {
-        title: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
         content: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -18,12 +14,20 @@ Post.init(
             allowNull: false,
             //constant that reps current date and time
             defaultValue: DataTypes.NOW,
-        },
+          },
         user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
                 model: 'user',
+                key: 'id',
+            }
+        },
+        post_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'post',
                 key: 'id',
             }
         },
@@ -36,4 +40,4 @@ Post.init(
     }
 );//ends User model parens
 
-module.exports = Post;
+module.exports = Comment;
