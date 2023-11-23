@@ -60,3 +60,5 @@ User.init(
         underscored: true,
     }
 );//ends User model parens
+
+module.exports = User;
