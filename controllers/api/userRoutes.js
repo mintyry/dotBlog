@@ -68,6 +68,7 @@ router.post('/login', async (req, res) => {
         //checks for valid login info follow
 
         if (!findUser) {
+            console.log('CANNOT LOG IN ______ USER');
             res.status(400).json({ message: 'Incorrect login; please try again.' });
             return;
         }
@@ -76,6 +77,7 @@ router.post('/login', async (req, res) => {
         const validPw = await findUser.checkPassword(req.body.password);
 
         if (!validPw) {
+            console.log('CANNOT LOG IN ______ PW');
             res.status(400).json({ message: 'Incorrect login; please try again.' });
             return;
         }

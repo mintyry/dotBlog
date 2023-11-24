@@ -42,6 +42,7 @@ router.get('/:id', async (req, res) => {
         res.status(500).json(error);
     }
 });
+//above route works
 
 //create a new post
 router.post('/', async (req, res) => {
