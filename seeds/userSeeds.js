@@ -5,17 +5,17 @@ const userData =
     {
       "name": "Ryan",
       "email": "Ryan@nomail.com",
-      "password": "123pw"
+      "password": "123Password$"
     },
     {
       "name": "Nike",
       "email": "sweetlove@nomail.com",
-      "password": "123pw"
+      "password": "123Password$"
     },
     {
       "name": "Bulba",
       "email": "bulbasaur@nomail.com",
-      "password": "151pw"
+      "password": "151Password$"
     }
   ];
 

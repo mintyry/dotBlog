@@ -19,6 +19,12 @@ const postData =
     "content": "This is all a dream.",
     "date_created": "1/3/23",
     "user_id": 3
+  },
+  {
+    "title": "Second post by user 1",
+    "content": "Testing to see if this fourth post is seeded to user 1/ryan",
+    "date_created": "1/7/23",
+    "user_id": 1
   }
 ];
 

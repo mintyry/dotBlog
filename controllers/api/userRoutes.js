@@ -15,6 +15,8 @@ router.get('/', async (req, res) => {
     }
 });
 
+//the above route works
+
 router.get('/:id', async (req, res) => {
     //find one user and their posts
     try {
@@ -31,6 +33,8 @@ router.get('/:id', async (req, res) => {
         res.status(500).json(error);
     }
 });
+
+//above route works; shows user and their posts
 
 //make a new user
 router.post('/', async (req, res) => {
@@ -88,6 +92,7 @@ router.post('/login', async (req, res) => {
         res.status(400).json(error);
     }
 });
+//error: connection refused by server
 
 //log user out
 router.post('/logout', (req, res) => {
@@ -100,5 +105,6 @@ router.post('/logout', (req, res) => {
         res.status(404).end();
     }
 });
+//dont know how to test this if login didnt work
 
 module.exports = router;
