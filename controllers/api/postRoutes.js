@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Post, User, Comment } = require('../../models');
 
 // !! look into auth; used to ensure user is logged in to see these
+// !! need to have update method
 
 //get all posts
 // the 'api/posts' endpoint
