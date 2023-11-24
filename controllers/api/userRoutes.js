@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { User } = require('../../models');
+const { User, Post } = require('../../models');
 
 // the 'api/users' endpoint
 //may want to delete this, bc in reality, you dont want to show a list of every user and all of their info
