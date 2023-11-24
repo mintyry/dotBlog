@@ -82,7 +82,7 @@ router.post('/login', async (req, res) => {
 
         req.session.save(() => {
             req.session.user_id = findUser.id;
-            req, session.logged_in = true;
+            req.session.logged_in = true;
 
             res.json({ user: findUser, message: 'Congrats, you\'re now logged into dotBlog!' });
         });
@@ -92,7 +92,7 @@ router.post('/login', async (req, res) => {
         res.status(400).json(error);
     }
 });
-//error: connection refused by server
+//above route works
 
 //log user out
 router.post('/logout', (req, res) => {
@@ -100,11 +100,12 @@ router.post('/logout', (req, res) => {
         req.session.destroy(() => {
             res.status(204).end();
         });
+    console.log('LOGGED OUT');
     } else {
         console.log(error);
         res.status(404).end();
     }
 });
-//dont know how to test this if login didnt work
+//above route works
 
 module.exports = router;
