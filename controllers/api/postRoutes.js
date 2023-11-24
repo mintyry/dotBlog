@@ -1,14 +1,15 @@
 const router = require('express').Router();
-const { User, Post } = require('../../models');
+const { Post } = require('../../models');
 
-//api/users endpoint
+//look into auth; used to ensure user is logged in to see these
+
+//get all posts
+// the 'api/posts' endpoint
 router.get('/', async (req, res) => {
-    //find all users
     try {
-        const userData = User.findAll();
-        res.status(200).json(userData);
+
     } catch (error) {
         console.log(error);
         res.status(500).json(error);
     }
-})
+});
