@@ -15,10 +15,10 @@ const userData =
     {
       "name": "Bulba",
       "email": "bulbasaur@nomail.com",
-      "password": "151Password$"
+      "password": "123Password$"
     }
   ];
 
-  const seedUsers = () => User.bulkCreate(userData);
+  const seedUsers = () => User.bulkCreate(userData, {individualHooks: true});
 
   module.exports = seedUsers;

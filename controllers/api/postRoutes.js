@@ -58,6 +58,22 @@ router.post('/', async (req, res) => {
     }
 });
 
+//update post
+// router.put('/:id', async (req, res) => {
+//     try {
+//        const updatePost = await Post.update(req.body, 
+//         {
+//             where: {
+//                 id: req.params.id
+//             }
+//         });
+
+//         if(!updatePost[0])
+//     } catch (error) {
+        
+//     }
+// })
+
 //delete post
 router.delete('/:id', async (req, res) => {
     try {
