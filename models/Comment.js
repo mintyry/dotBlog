@@ -14,7 +14,7 @@ Comment.init(
             allowNull: false,
             //constant that reps current date and time
             defaultValue: DataTypes.NOW,
-          },
+        },
         user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -36,7 +36,9 @@ Comment.init(
         //establishes sequelize functionality with this model and db
         sequelize,
         timestamps: false,
+        freezeTableName: true,
         underscored: true,
+        modelName: 'comment',
     }
 );//ends User model parens
 

@@ -32,7 +32,9 @@ Post.init(
         //establishes sequelize functionality with this model and db
         sequelize,
         timestamps: false,
+        freezeTableName: true,
         underscored: true,
+        modelName: 'post',
     }
 );//ends User model parens
 
