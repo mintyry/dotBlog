@@ -22,8 +22,18 @@ router.get('/:id', async (req, res) => {
         const onePost = await Post.findByPk(req.params.id,
             {
                 include: [
-                    User,
-                    Comment
+                    {
+                        model: User,
+                        attributes: ['id', 'name']
+                    },
+                    {
+                        model: Comment,
+                        attributes: ['id', 'content', 'date_created'],
+                        include: [{
+                            model: User,
+                            attributes: ['name']
+                        }]
+                    },
                 ]
             });
         res.status(200).json(onePost);
