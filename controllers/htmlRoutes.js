@@ -26,7 +26,13 @@ router.get('/', async (req, res) => {
 
 //login
 router.get('/login', (req, res) => {
-    res.render('login', {});
+    //if user is already logged in, they just get redirected to dashboard
+    if (req.session.logged_in) {
+        res.redirect('/dashboard');
+        return;
+      }
+    
+      res.render('login');
 });
 
 //dashboard
