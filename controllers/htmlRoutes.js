@@ -88,14 +88,15 @@ router.get('/single-post/:id', withAuth, async (req, res) => {
         const singlePost = onePost.get({ plain: true });
 
         console.log(singlePost)
+        console.log(singlePost.date_created)
+        console.log(singlePost.title)
 
-        res.render('singlePost', { ...singlePost, logged_in: req.session.logged_in });
+        res.render('singlePost', { singlePost, logged_in: req.session.logged_in });
 
     } catch (error) {
         console.log(error);
         res.status(500).json(error);
     }
-    res.render('singlePost', {});
 });
 
 
