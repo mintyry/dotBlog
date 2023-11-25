@@ -1,3 +1,5 @@
+{{#if posts}}
+
 {{#each posts as |post|}}
 
 <div class="row mb-4 project">
@@ -15,5 +17,9 @@
   </div>
 </div>
 
-
 {{/each}}
+
+{{else}}
+<p>There are no posts yet. When you or others decide to [dot]Blog, they will show here!</p>
+
+{{/if}}
