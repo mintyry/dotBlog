@@ -2,14 +2,14 @@ const loginFormHandler = async (event) => {
   event.preventDefault();
 
   // Collect values from the login form
-  const email = document.querySelector('#email-login').value.trim();
+  const name = document.querySelector('#name-login').value.trim();
   const password = document.querySelector('#password-login').value.trim();
 
-  if (email && password) {
+  if (name && password) {
     // Send a POST request to the API endpoint
     const response = await fetch('/api/users/login', {
       method: 'POST',
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ name, password }),
       headers: { 'Content-Type': 'application/json' },
     });
 
@@ -39,7 +39,13 @@ const signupFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/dashboard');
     } else {
-      alert(response.statusText);
+      const resData = await response.json();
+      const passwordError = resData.errors?.find(error => error.path === 'password');
+      if (passwordError) {
+        alert('Password must be at least 8 characters and contain at least one lowercase letter, one uppercase letter, one number, and one special character.')
+      } else {
+        alert('That username or email is already in use.');
+      }
     }
   }
 };
