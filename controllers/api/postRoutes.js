@@ -7,32 +7,32 @@ const { Post, User, Comment } = require('../../models');
 
 // the 'api/posts' endpoint
 
-//get 1 post
-// router.get('/:id', async (req, res) => {
-//     try {
-//         const onePost = await Post.findByPk(req.params.id,
-//             {
-//                 include: [
-//                     {
-//                         model: User,
-//                         attributes: ['id', 'name']
-//                     },
-//                     {
-//                         model: Comment,
-//                         attributes: ['id', 'content', 'date_created'],
-//                         include: [{
-//                             model: User,
-//                             attributes: ['name']
-//                         }]
-//                     },
-//                 ]
-//             });
-//         res.status(200).json(onePost);
-//     } catch (error) {
-//         console.log(error);
-//         res.status(500).json(error);
-//     }
-// });
+// get 1 post
+router.get('/:id', async (req, res) => {
+    try {
+        const onePost = await Post.findByPk(req.params.id,
+            {
+                include: [
+                    {
+                        model: User,
+                        attributes: ['id', 'name']
+                    },
+                    {
+                        model: Comment,
+                        attributes: ['id', 'content', 'date_created'],
+                        include: [{
+                            model: User,
+                            attributes: ['name']
+                        }]
+                    },
+                ]
+            });
+        res.status(200).json(onePost);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
+});
 //above route works
 
 //create a new post

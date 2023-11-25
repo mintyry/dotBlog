@@ -1,3 +1,18 @@
 <h1>
     SINGLE POST
 </h1>
+
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <h2>
+      <!-- This will lead to an individual post -->
+      <a href="/single-post/{{singlePost.id}}">{{singlePost.title}}</a>
+    </h2>
+    <p>Created by {{singlePost.user.name}} on {{format_date singlePost.date_created}}</p>
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{singlePost.content}}
+    </p>
+  </div>
+</div>

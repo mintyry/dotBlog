@@ -30,9 +30,9 @@ router.get('/login', (req, res) => {
     if (req.session.logged_in) {
         res.redirect('/dashboard');
         return;
-      }
-    
-      res.render('login');
+    }
+
+    res.render('login');
 });
 
 //dashboard
@@ -62,7 +62,39 @@ router.get('/dashboard', withAuth, async (req, res) => {
 });
 
 //single post
-router.get('/single-post/:id', (req, res) => {
+router.get('/single-post/:id', withAuth, async (req, res) => {
+
+    try {
+        const onePost = await Post.findByPk(req.params.id,
+            {
+                include: [
+                    {
+                        model: User,
+                        attributes: ['id', 'name']
+                    },
+                    {
+                        model: Comment,
+                        attributes: ['id', 'content', 'date_created'],
+                        include: [
+                            {
+                                model: User,
+                                attributes: ['name']
+                            }
+                        ]
+                    },
+                ]
+            });
+
+        const singlePost = onePost.get({ plain: true });
+
+        console.log(singlePost)
+
+        res.render('singlePost', { ...singlePost, logged_in: req.session.logged_in });
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
     res.render('singlePost', {});
 });
 
