@@ -8,31 +8,31 @@ const { Post, User, Comment } = require('../../models');
 // the 'api/posts' endpoint
 
 //get 1 post
-router.get('/:id', async (req, res) => {
-    try {
-        const onePost = await Post.findByPk(req.params.id,
-            {
-                include: [
-                    {
-                        model: User,
-                        attributes: ['id', 'name']
-                    },
-                    {
-                        model: Comment,
-                        attributes: ['id', 'content', 'date_created'],
-                        include: [{
-                            model: User,
-                            attributes: ['name']
-                        }]
-                    },
-                ]
-            });
-        res.status(200).json(onePost);
-    } catch (error) {
-        console.log(error);
-        res.status(500).json(error);
-    }
-});
+// router.get('/:id', async (req, res) => {
+//     try {
+//         const onePost = await Post.findByPk(req.params.id,
+//             {
+//                 include: [
+//                     {
+//                         model: User,
+//                         attributes: ['id', 'name']
+//                     },
+//                     {
+//                         model: Comment,
+//                         attributes: ['id', 'content', 'date_created'],
+//                         include: [{
+//                             model: User,
+//                             attributes: ['name']
+//                         }]
+//                     },
+//                 ]
+//             });
+//         res.status(200).json(onePost);
+//     } catch (error) {
+//         console.log(error);
+//         res.status(500).json(error);
+//     }
+// });
 //above route works
 
 //create a new post
@@ -50,20 +50,30 @@ router.post('/', async (req, res) => {
 });
 
 //update post
-// router.put('/:id', async (req, res) => {
-//     try {
-//        const updatePost = await Post.update(req.body, 
-//         {
-//             where: {
-//                 id: req.params.id
-//             }
-//         });
+router.put('/:id', async (req, res) => {
+    try {
+        const updatePost = await Post.update(req.body,
+            {
+                where: {
+                    id: req.params.id
+                }
+            }
+        );
 
-//         if(!updatePost[0])
-//     } catch (error) {
-        
-//     }
-// })
+        if (!updatePost[0]) {
+            res.status(404).json(
+                {
+                    message: 'Post does not exist, therefore cannot be updated.'
+                }
+            );
+            return;
+        }
+        res.status(200).json(updatePost);
+    } catch (error) {
+        console.log(error)
+        res.status(500).json(error);
+    }
+});
 
 //delete post
 router.delete('/:id', async (req, res) => {
@@ -77,7 +87,7 @@ router.delete('/:id', async (req, res) => {
         });
 
         if (!deletePost) {
-            res.status(404).json({message: 'Can\'t delete something that doesn\'t exist.'});
+            res.status(404).json({ message: 'Can\'t delete something that doesn\'t exist.' });
             return;
         };
         res.status(200).json(deletePost);
