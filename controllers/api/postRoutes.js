@@ -4,17 +4,8 @@ const { Post, User, Comment } = require('../../models');
 // !! look into auth; used to ensure user is logged in to see these
 // !! need to have update method
 
-//get all posts
+
 // the 'api/posts' endpoint
-router.get('/', async (req, res) => {
-    try {
-        const allPosts = await Post.findAll();
-        res.status(200).json(allPosts);
-    } catch (error) {
-        console.log(error);
-        res.status(500).json(error);
-    }
-});
 
 //get 1 post
 router.get('/:id', async (req, res) => {
