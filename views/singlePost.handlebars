@@ -1,18 +1,35 @@
 <div class="row mb-4 project">
-  <div class="col-md-5">
+  <div class="col-md-12 bg-info text-center">
     <h1>
-    <strong> {{singlePost.title}} </strong>
+      <strong> {{singlePost.title}} </strong>
     </h1>
     <p>Created by {{singlePost.user.name}} on {{format_date singlePost.date_created}}</p>
   </div>
-  <div class="col-md-7 my-2">
+  <br />
+  <div class="col-md-12 my-2 mx-auto text-center">
     <p>
       {{singlePost.content}}
     </p>
   </div>
-{{!-- add a comment --}}
-<p>
-  <button class="btn btn-primary">[dot]Comment</button>
-</p>
+  <br />
+  <br />
+  {{!-- display comments --}}
+  <div class="col-md-6 my-2 mx-auto text-center bg-light">
+    <p>
+      <strong>-- [dot]Comments -- </strong><br />
+      <br />
+      <br />
+      <em> 
+        {{singlePost.comments.[0].content}} <br />
+        <span style="font-size: 10px">- {{singlePost.comments.[0].user.name}}</span>
+      </em>
+    </p>
+
+    {{!-- add a comment --}}
+
+    <button class="btn btn-primary">[dot]Comment</button>
+
+  </div>
+
 
 </div>
