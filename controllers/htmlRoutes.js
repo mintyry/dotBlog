@@ -90,7 +90,6 @@ router.get('/singlePost/:id', withAuth, async (req, res) => {
         console.log(singlePost)
         console.log(singlePost.date_created)
         console.log(singlePost.title)
-        console.log(singlePost.comments[0].content)
 
         res.render('singlePost', { singlePost, logged_in: req.session.logged_in });
 
