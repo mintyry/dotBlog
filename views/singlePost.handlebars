@@ -16,13 +16,12 @@
   {{!-- display comments --}}
   <div class="col-md-6 my-2 mx-auto text-center bg-light">
     <p>
-      <strong>-- [dot]Comments -- </strong><br />
-      <br />
-    <div class="col-md-6 my-5 mx-auto text-center bg-white border-bottom">
+      <strong>[dot]Comments</strong><br />
+    <div class="col-md-6 my-5 py-2 mx-auto text-center bg-white">
       {{#each singlePost.comments}}
       <em>
         {{this.content}} <br />
-        <span style="font-size: 10px">- {{this.user.name}}</span>
+        <span style="font-size: 10px">- {{this.user.name}}, {{format_date this.date_created}}</span>
       </em>
 
       <br />
