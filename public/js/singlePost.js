@@ -1,16 +1,16 @@
 const newFormHandler = async (event) => {
     event.preventDefault();
-    console.log('hi');
+ 
 
     const url = window.location.href;
     const match = url.match(/\/singlePost\/(\d+)/);
-    console.log('we got to here 1')
+  
 
     if (match && match[1]) { // Add a check for match[1]
-        console.log('we got to here 2')
+    
         const targetId = match[1];
         const newComment = document.querySelector('#newcomment').value.trim();
-        console.log('we got to here 3')
+
 
         if (newComment) {
             const response = await fetch(`/api/comments`, {
@@ -21,8 +21,6 @@ const newFormHandler = async (event) => {
                 },
             });
 
-            console.log('fetch happened');
-            console.log(response);
 
             if (response.ok) {
                 document.location.reload();

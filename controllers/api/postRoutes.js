@@ -36,18 +36,32 @@ router.get('/:id', async (req, res) => {
 //above route works
 
 //create a new post
+// router.post('/', async (req, res) => {
+//     try {
+//         const newPost = await Post.create({
+//             ...req.body,
+//             user_id: req.session.user_id
+//         });
+//         res.status(200).json(newPost);
+//     } catch (error) {
+//         console.log(error);
+//         res.status(500).json(error);
+//     }
+// });
+
 router.post('/', async (req, res) => {
+    console.log('new post incoming')
     try {
-        const newPost = await Post.create({
-            ...req.body,
-            user_id: req.session.user_id
-        });
-        res.status(200).json(newPost);
+      const newPost = await Post.create({
+        ...req.body,
+        user_id: req.session.user_id
+      });
+      res.status(200).json(newPost);
     } catch (error) {
-        console.log(error);
-        res.status(500).json(error);
+      console.log(error);
+      res.status(500).json({ message: 'Failed to create post' });
     }
-});
+  });
 
 //update post
 router.put('/:id', async (req, res) => {

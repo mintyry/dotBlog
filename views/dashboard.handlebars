@@ -28,24 +28,24 @@
 </p>
 <br />
 {{!-- form for new post is hidden until button is clicked --}}
-<form id="myForm" style="display: none;">
+<form class="form new-post-form" id="myForm" style="display: none;">
   <div class="row mt-4">
   <div class="col-md-6">
     <h3>[dot]Blog your new post:</h3>
 
-    <form class="form new-project-form">
       <div class="form-group">
-        <label for="project-name">Post title:</label>
-        <input class="form-input" type="text" id="project-name" name="project-name" />
+        <label for="post-title">Post title:</label>
+        <input class="form-input" type="text" id="post-title" name="post-title" />
       </div>
       <div class="form-group">
-        <label for="project-desc">Post body:</label>
-        <textarea class="form-input" id="project-desc" name="project-desc"></textarea>
+        <label for="post-body">Post body:</label>
+        <textarea class="form-input" id="post-body" name="post-body"></textarea>
       </div>
+
       <div class="form-group">
-        <button type="submit" class="btn btn-primary">[dot]Blog it!</button>
+        <button id="submitpost" type="submit" class="btn btn-primary">[dot]Blog it!</button>
       </div>
-    </form>
+
   </div>
 </form>
 
