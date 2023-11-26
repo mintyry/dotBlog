@@ -12,7 +12,10 @@
     </p>
     {{log (equal singlePost.user_id req.session.user_id)}}
      {{log (equal singlePost.user_id req.session.user_id)}}
-    {{#if (equal singlePost.user_id req.session.user_id)}}
+    {{log singlePost.user_id}}
+      {{log req.session.user_id}}
+
+    {{#if (equal singlePost.user_id currentId)}}
     <button type="submit" class="btn btn-info" id="update-post">[update]Post</button>
     <button type="submit" class="btn btn-danger" id="delete-post">[delete]Post</button>
     {{/if}}

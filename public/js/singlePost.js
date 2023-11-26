@@ -36,19 +36,24 @@ const newFormHandler = async (event) => {
 document.querySelector('#add-comment').addEventListener('click', newFormHandler)
 
 // delete post
-// document.querySelector('#delete-post').addEventListener('click', async (event) => {
-//     event.preventDefault();
-//     console.log('delete incoming');
+//used if check just to ensure error doesnt pop up when viewing others' posts, because otherwise, error will log for this function because a button won't be found, since the button only shows up if you're the owner of that post.
+const deletePost = document.querySelector('#delete-post');
 
-//     const deleteId = window.location.pathname.split('/').pop();
+if (deletePost) {
+    deletePost.addEventListener('click', async (event) => {
+        event.preventDefault();
+        console.log('delete incoming');
 
-//     const response = await fetch(`/api/posts/${deleteId}`, {
-//         method: 'DELETE',
-//     });
+        const deleteId = window.location.pathname.split('/').pop();
 
-//     if (response.ok) {
-//         document.location.replace('/dashboard')
-//     } else {
-//         alert('Failed to delete post');
-//     };
-// });
+        const response = await fetch(`/api/posts/${deleteId}`, {
+            method: 'DELETE',
+        });
+
+        if (response.ok) {
+            document.location.replace('/dashboard')
+        } else {
+            alert('Failed to delete post');
+        };
+    });
+}
