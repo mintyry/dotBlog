@@ -86,10 +86,15 @@ router.get('/singlePost/:id', withAuth, async (req, res) => {
             });
 
         const singlePost = onePost.get({ plain: true });
+        console.log('current user ID:', req.session.user_id);
+        console.log(typeof req.session.user_id)
+        console.log('post user ID:', singlePost.user_id);
+        console.log(typeof singlePost.user_id)
+        
 
-        console.log(singlePost)
-        console.log(singlePost.date_created)
-        console.log(singlePost.title)
+        // console.log(singlePost)
+        // console.log(singlePost.date_created)
+        // console.log(singlePost.title)
 
         res.render('singlePost', { singlePost, logged_in: req.session.logged_in });
 
