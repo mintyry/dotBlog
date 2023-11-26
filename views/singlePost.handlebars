@@ -19,17 +19,23 @@
       <strong>-- [dot]Comments -- </strong><br />
       <br />
       <br />
-      <em> 
+      <em>
         {{singlePost.comments.[0].content}} <br />
         <span style="font-size: 10px">- {{singlePost.comments.[0].user.name}}</span>
       </em>
     </p>
 
     {{!-- add a comment --}}
+    <form id="commentForm">
+      <div class="form-group">
+        <textarea class="form-input" id="newcomment" name="newcomment" placeholder="Add your comment"></textarea>
+        <button type="submit" class="btn btn-primary" id ="add-comment">[add]Comment</button>
+      </div>
+    </form>
 
-    <button class="btn btn-primary">[dot]Comment</button>
 
   </div>
 
 
 </div>
+<script src="../public/js/singlePost.js"></script>

@@ -62,7 +62,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
 });
 
 //single post
-router.get('/single-post/:id', withAuth, async (req, res) => {
+router.get('/singlePost/:id', withAuth, async (req, res) => {
 
     try {
         const onePost = await Post.findByPk(req.params.id,
