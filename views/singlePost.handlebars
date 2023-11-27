@@ -11,17 +11,39 @@
       {{singlePost.content}}
     </p>
     {{log (equal singlePost.user_id req.session.user_id)}}
-     {{log (equal singlePost.user_id req.session.user_id)}}
+    {{log (equal singlePost.user_id req.session.user_id)}}
     {{log singlePost.user_id}}
-      {{log req.session.user_id}}
+    {{log req.session.user_id}}
 
     {{#if (equal singlePost.user_id currentId)}}
     <button type="submit" class="btn btn-info" id="update-post">[update]Post</button>
     <button type="submit" class="btn btn-danger" id="delete-post">[delete]Post</button>
     {{/if}}
+
+    <form class="form new-post-form" id="upPost" style="display: none;">
+      <div class="row mt-4">
+        <div class="col-md-12">
+          <h3>[dot]Blog your new post:</h3>
+
+          <div class="form-group">
+            <label for="post-title">Post title:</label>
+            <input class="form-input" type="text" id="post-title" name="post-title" value="{{singlePost.title}}" />
+          </div>
+          <div class="form-group">
+            <label for="post-body">Post body:</label>
+            <textarea class="form-input" id="post-body" name="post-body">{{singlePost.content}}</textarea>
+          </div>
+
+          <div class="form-group">
+            <button id="submitpost" type="submit" class="btn btn-primary">[dot]Blog it!</button>
+          </div>
+
+        </div>
+    </form>
   </div>
   <br />
   <br />
+
   {{!-- display comments --}}
   <div class="col-md-6 my-2 mx-auto text-center bg-light">
     <p>
@@ -49,7 +71,6 @@
 
 
   </div>
-
-
 </div>
+
 <script src="/js/singlePost.js"></script>

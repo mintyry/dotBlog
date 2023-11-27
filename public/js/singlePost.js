@@ -56,4 +56,33 @@ if (deletePost) {
             alert('Failed to delete post');
         };
     });
-}
+};
+
+// update post
+//used if check just to ensure error doesnt pop up when viewing others' posts, because otherwise, error will log for this function because a button won't be found, since the button only shows up if you're the owner of that post.
+const updatePost = document.querySelector('#update-post');
+
+if (updatePost) {
+    updatePost.addEventListener('click', async (event) => {
+        event.preventDefault();
+        const upPost = document.getElementById('upPost');
+        upPost.style.display = 'block';
+        console.log('update incoming');
+
+        // const updateId = window.location.pathname.split('/').pop();
+
+        // const response = await fetch(`/api/posts/${updateId}`, {
+        //     method: 'PUT',
+        //     body: JSON.stringify({ newComment, targetId }),
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        // });
+
+        // if (response.ok) {
+        //     document.location.replace('/dashboard')
+        // } else {
+        //     alert('Failed to delete post');
+        // };
+    });
+};
