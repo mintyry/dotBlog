@@ -1,5 +1,41 @@
+html, body {
+  background-color: #FAE8E0;
+}
+
+.bgc-light {
+  background-color: #FAE8E0;
+}
+.bgc-cmt {
+  background-image: linear-gradient(#fbf1ed, transparent);
+}
+
+.bgc-lighter {
+    background-image: linear-gradient(to right, #fbf1ed, transparent);
+}
+
+.bgc-green {
+  background-color: #40b8b2;
+}
+
+.oneTitle {
+  background-image: linear-gradient(to right, transparent, #40b8b2, transparent);
+}
+
+.bgc-red {
+  background-color: #EF7C8E;
+}
+
+.c-bottom-border {
+  border-bottom: 1px solid #D8A7B1;
+  margin-bottom: 1rem;
+}
+
+.deleteBtn:hover {
+  background-color: #ff5d75;
+}
+
 header, .project:not(:last-child) {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #D8A7B1;
 }
 
 .no-button {
@@ -7,12 +43,12 @@ header, .project:not(:last-child) {
   border: none;
   padding: 0;
   cursor: pointer;
-  color: #1b89bc;
+  color: #40b8b2;
   text-decoration: none;
   font-size: 100%;
 }
 
 .no-button:hover {
-  color: #065b83;
+  color: #86e1dd;
   text-decoration: underline;
 }

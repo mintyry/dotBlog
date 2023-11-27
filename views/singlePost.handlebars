@@ -1,5 +1,5 @@
 <div class="row mb-4 project">
-  <div class="col-md-12 bg-info text-center">
+  <div class="col-md-12 oneTitle text-center" style="color:#ffffff">
     <h1>
       <strong> {{singlePost.title}} </strong>
     </h1>
@@ -13,8 +13,8 @@
 
     {{!-- update and delete buttons only show if this equal helpers results in true --}}
     {{#if (equal singlePost.user_id currentId)}}
-    <button type="submit" class="btn btn-info" id="update-post">[update]Post</button>
-    <button type="submit" class="btn btn-danger" id="delete-post">[delete]Post</button>
+    <button type="submit" class="btn bgc-green" id="update-post" style="color:#ffffff">[update]Post</button>
+    <button type="submit" class="btn bgc-red deleteBtn" id="delete-post" style="color:#ffffff">[delete]Post</button>
     {{/if}}
 
     {{!-- form to update post is hidden until update button is clicked --}}
@@ -33,7 +33,7 @@
           </div>
 
           <div class="form-group">
-            <button id="update" type="submit" class="btn btn-primary">[up]Date it!</button>
+            <button id="update" type="submit" class="btn bgc-green" style="color:#fff">[up]Date</button>
           </div>
 
         </div>
@@ -43,18 +43,17 @@
   <br />
 
   {{!-- display comments --}}
-  <div class="col-md-6 my-2 mx-auto text-center bg-light">
+  <div class="col-md-6 my-2 mx-auto text-center bgc-cmt">
     <p>
       <strong>[dot]Comments</strong><br />
     <div class="col-md-6 my-5 py-2 mx-auto text-center bg-white">
       {{#each singlePost.comments}}
+      <div class="c-bottom-border">
       <em>
         {{this.content}} <br />
         <span style="font-size: 10px">- {{this.user.name}}, {{format_date this.date_created}}</span>
       </em>
-
-      <br />
-      <br />
+      </div>
       {{/each}}
     </div>
     </p>
@@ -63,7 +62,7 @@
     <form id="commentForm">
       <div class="form-group">
         <textarea class="form-input" id="newcomment" name="newcomment" placeholder="Add your comment"></textarea>
-        <button type="submit" class="btn btn-primary" id="add-comment">[add]Comment</button>
+        <button type="submit" class="btn bgc-green" id="add-comment" style="color:#fff">[add]Comment</button>
       </div>
     </form>
   </div>
