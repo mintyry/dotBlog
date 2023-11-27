@@ -68,21 +68,33 @@ if (updatePost) {
         const upPost = document.getElementById('upPost');
         upPost.style.display = 'block';
         console.log('update incoming');
-
-        // const updateId = window.location.pathname.split('/').pop();
-
-        // const response = await fetch(`/api/posts/${updateId}`, {
-        //     method: 'PUT',
-        //     body: JSON.stringify({ newComment, targetId }),
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        // });
-
-        // if (response.ok) {
-        //     document.location.replace('/dashboard')
-        // } else {
-        //     alert('Failed to delete post');
-        // };
     });
 };
+
+const updateForm = document.querySelector('#update');
+updateForm.addEventListener('click', async (event) => {
+    event.preventDefault();
+    const updateId = window.location.pathname.split('/').pop();
+    const updatedTitle = document.querySelector('#up-title').value.trim();
+    const updatedContent = document.querySelector('#up-body').value.trim();
+
+    console.log(updatedTitle)
+    console.log(updatedContent)
+
+    const response = await fetch(`/api/posts/${updateId}`, {
+        method: 'PUT',
+        body: JSON.stringify({ updatedTitle, updatedContent }),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+    if (response.ok) {
+        console.log(updatedTitle)
+        console.log(updatedContent)
+        // document.location.replace('/dashboard')
+    } else {
+        console.log('something went wrong')
+        alert('Failed to delete post');
+    };
+});

@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Post, User, Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // !! look into auth; used to ensure user is logged in to see these
 // !! need to have update method
@@ -64,7 +65,7 @@ router.post('/', async (req, res) => {
   });
 
 //update post
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     try {
         const updatePost = await Post.update(req.body,
             {
@@ -75,7 +76,7 @@ router.put('/:id', async (req, res) => {
             }
         );
 
-        if (!updatePost[0]) {
+        if (!updatePost) {
             res.status(404).json(
                 {
                     message: 'Post does not exist, therefore cannot be updated.'
@@ -83,9 +84,11 @@ router.put('/:id', async (req, res) => {
             );
             return;
         }
+        console.log('we got this far into the update')
         res.status(200).json(updatePost);
     } catch (error) {
         console.log(error)
+        console.log('we got this far into the update but error')
         res.status(500).json(error);
     }
 });
