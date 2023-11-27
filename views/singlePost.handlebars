@@ -11,11 +11,13 @@
       {{singlePost.content}}
     </p>
 
+    {{!-- update and delete buttons only show if this equal helpers results in true --}}
     {{#if (equal singlePost.user_id currentId)}}
     <button type="submit" class="btn btn-info" id="update-post">[update]Post</button>
     <button type="submit" class="btn btn-danger" id="delete-post">[delete]Post</button>
     {{/if}}
 
+    {{!-- form to update post is hidden until update button is clicked --}}
     <form class="form new-post-form" id="upPost" style="display: none;">
       <div class="row mt-4">
         <div class="col-md-12">
@@ -64,8 +66,6 @@
         <button type="submit" class="btn btn-primary" id="add-comment">[add]Comment</button>
       </div>
     </form>
-
-
   </div>
 </div>
 

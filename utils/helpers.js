@@ -9,3 +9,5 @@ module.exports = {
     return x === y;
   }
 };
+
+//used in singlePost.handlebars to see if post's user id matches the current user's id

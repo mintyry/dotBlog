@@ -1,3 +1,5 @@
+//function to login with username and password
+
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
@@ -22,6 +24,7 @@ const loginFormHandler = async (event) => {
   }
 };
 
+//function to sign up with name, email, and password
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
@@ -50,6 +53,7 @@ const signupFormHandler = async (event) => {
   }
 };
 
+//runs above functions when user clicks login or signup button
 document
   .querySelector('.login-form')
   .addEventListener('submit', loginFormHandler);

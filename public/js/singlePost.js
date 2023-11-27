@@ -1,18 +1,14 @@
 //add comment
-
 const newFormHandler = async (event) => {
     event.preventDefault();
-
 
     const url = window.location.href;
     const match = url.match(/\/singlePost\/(\d+)/);
 
-
-    if (match && match[1]) { // Add a check for match[1]
+    if (match && match[1]) { // Adds a check for match[1]
 
         const targetId = match[1];
         const newComment = document.querySelector('#newcomment').value.trim();
-
 
         if (newComment) {
             const response = await fetch(`/api/comments`, {
@@ -23,7 +19,6 @@ const newFormHandler = async (event) => {
                 },
             });
 
-
             if (response.ok) {
                 document.location.reload();
             } else {
@@ -32,7 +27,7 @@ const newFormHandler = async (event) => {
         }
     }
 };
-
+//when user clicks to add a comment, the above function runs
 document.querySelector('#add-comment').addEventListener('click', newFormHandler)
 
 // delete post
@@ -42,7 +37,6 @@ const deletePost = document.querySelector('#delete-post');
 if (deletePost) {
     deletePost.addEventListener('click', async (event) => {
         event.preventDefault();
-        console.log('delete incoming');
 
         const deleteId = window.location.pathname.split('/').pop();
 
@@ -67,7 +61,6 @@ if (updatePost) {
         event.preventDefault();
         const upPost = document.getElementById('upPost');
         upPost.style.display = 'block';
-        console.log('update incoming');
     });
 };
 
@@ -78,9 +71,6 @@ updateForm.addEventListener('click', async (event) => {
     const updatedTitle = document.querySelector('#up-title').value.trim();
     const updatedContent = document.querySelector('#up-body').value.trim();
 
-    console.log(updatedTitle)
-    console.log(updatedContent)
-
     const response = await fetch(`/api/posts/${updateId}`, {
         method: 'PUT',
         body: JSON.stringify({ title: updatedTitle, content: updatedContent }),
@@ -90,11 +80,8 @@ updateForm.addEventListener('click', async (event) => {
     });
 
     if (response.ok) {
-        console.log(updatedTitle)
-        console.log(updatedContent)
         document.location.replace('/dashboard')
     } else {
-        console.log('something went wrong')
         alert('Failed to delete post');
     };
 });

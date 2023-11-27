@@ -2,10 +2,6 @@ const router = require('express').Router();
 const { Post, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// !! look into auth; used to ensure user is logged in to see these
-// !! need to have update method
-
-
 // the 'api/posts' endpoint
 
 // get 1 post
@@ -34,41 +30,25 @@ router.get('/:id', async (req, res) => {
         res.status(500).json(error);
     }
 });
-//above route works
 
-//create a new post
-// router.post('/', async (req, res) => {
-//     try {
-//         const newPost = await Post.create({
-//             ...req.body,
-//             user_id: req.session.user_id
-//         });
-//         res.status(200).json(newPost);
-//     } catch (error) {
-//         console.log(error);
-//         res.status(500).json(error);
-//     }
-// });
-
+//make new post
 router.post('/', async (req, res) => {
-    console.log('new post incoming')
+
     try {
-      const newPost = await Post.create({
-        ...req.body,
-        user_id: req.session.user_id
-      });
-      res.status(200).json(newPost);
+        const newPost = await Post.create({
+            ...req.body,
+            user_id: req.session.user_id
+        });
+        res.status(200).json(newPost);
     } catch (error) {
-      console.log(error);
-      res.status(500).json({ message: 'Failed to create post' });
+        console.log(error);
+        res.status(500).json({ message: 'Failed to create post' });
     }
-  });
+});
 
 //update post
 router.put('/:id', withAuth, async (req, res) => {
     try {
-        console.log(req.body, req.params.id, req.session)
-        
         const updatePost = await Post.update(req.body,
             {
                 where: {
@@ -85,12 +65,11 @@ router.put('/:id', withAuth, async (req, res) => {
                 }
             );
             return;
-        }
-        console.log('we got this far into the update')
+        };
+
         res.status(200).json(updatePost);
     } catch (error) {
         console.log(error)
-        console.log('we got this far into the update but error')
         res.status(500).json(error);
     }
 });

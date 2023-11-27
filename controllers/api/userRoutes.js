@@ -3,38 +3,6 @@ const router = require('express').Router();
 const { User, Post } = require('../../models');
 
 // the 'api/users' endpoint
-//may want to delete this, bc in reality, you dont want to show a list of every user and all of their info
-//maybe keep, so when logged in, user can see their own info?
-// router.get('/', async (req, res) => {
-//     try {
-//         const showUsers = await User.findAll();
-//         res.status(200).json(showUsers);
-//     } catch (error) {
-//         console.log(error);
-//         res.status(500).json(error);
-//     }
-// });
-
-//the above route works
-
-// router.get('/:id', async (req, res) => {
-//     //find one user and their posts
-//     try {
-//         const singleUser = await User.findByPk(req.params.id,
-//             {
-//                 include: [Post]
-//             });
-//         if (!singleUser) {
-//             res.status(404).json({ message: 'MISSING! This user hasn\'t been seen ever!' });
-//             return;
-//         }
-//         res.status(200).json(singleUser);
-//     } catch (error) {
-//         res.status(500).json(error);
-//     }
-// });
-
-//above route works; shows user and their posts
 
 //make a new user
 router.post('/', async (req, res) => {
@@ -68,7 +36,6 @@ router.post('/login', async (req, res) => {
         //checks for valid login info follow
 
         if (!findUser) {
-            console.log('CANNOT LOG IN ______ USER');
             res.status(400).json({ message: 'Incorrect login; please try again.' });
             return;
         }
@@ -77,7 +44,6 @@ router.post('/login', async (req, res) => {
         const validPw = await findUser.checkPassword(req.body.password);
 
         if (!validPw) {
-            console.log('CANNOT LOG IN ______ PW');
             res.status(400).json({ message: 'Incorrect login; please try again.' });
             return;
         }
@@ -94,7 +60,7 @@ router.post('/login', async (req, res) => {
         res.status(400).json(error);
     }
 });
-//above route works
+
 
 //log user out
 router.post('/logout', (req, res) => {
@@ -102,12 +68,12 @@ router.post('/logout', (req, res) => {
         req.session.destroy(() => {
             res.status(204).end();
         });
-    console.log('LOGGED OUT');
+
     } else {
         console.log(error);
         res.status(404).end();
     }
 });
-//above route works
+
 
 module.exports = router;

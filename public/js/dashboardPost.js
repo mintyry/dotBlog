@@ -1,3 +1,5 @@
+//when user clicks button to make a new post, makes form appear
+
 document.querySelector('#new-post').addEventListener('click', (event) => {
     event.preventDefault();
 
@@ -7,6 +9,9 @@ document.querySelector('#new-post').addEventListener('click', (event) => {
     const myForm = document.getElementById('myForm');
     myForm.style.display = 'block';
 });
+
+
+//when user clicks button to submit new post
 
 document.querySelector('#submitpost').addEventListener('click', async (event) => {
     event.preventDefault();
