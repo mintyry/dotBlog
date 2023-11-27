@@ -83,7 +83,7 @@ updateForm.addEventListener('click', async (event) => {
 
     const response = await fetch(`/api/posts/${updateId}`, {
         method: 'PUT',
-        body: JSON.stringify({ updatedTitle, updatedContent }),
+        body: JSON.stringify({ title: updatedTitle, content: updatedContent }),
         headers: {
             'Content-Type': 'application/json',
         },
@@ -92,7 +92,7 @@ updateForm.addEventListener('click', async (event) => {
     if (response.ok) {
         console.log(updatedTitle)
         console.log(updatedContent)
-        // document.location.replace('/dashboard')
+        document.location.replace('/dashboard')
     } else {
         console.log('something went wrong')
         alert('Failed to delete post');
