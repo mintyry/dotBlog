@@ -16,7 +16,7 @@ const hbs = exphbs.create({ helpers });
 
 //configuring session middleware
 const sess = {
-  secret: 'boogedybooboobooger',
+  secret: '4t0g8reovgw4g8',
   cookie: {
     maxAge: 300000,
     httpOnly: true,
